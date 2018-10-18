@@ -3,7 +3,6 @@ package printers;
 public abstract class Printer extends Thread {
     private final Object NextLock;
     private final Object CurrentLock;
-    private final int Count = 10;
 
     public Printer(Object nextLock, Object currrentLock) {
         NextLock = nextLock;
@@ -12,7 +11,8 @@ public abstract class Printer extends Thread {
 
     @Override
     public void run() {
-        for (int i = 0; i < Count; i++) {
+        int count = 10;
+        for (int i = 0; i < count; i++) {
             try {
                 synchronized (CurrentLock) {
                     CurrentLock.wait();
