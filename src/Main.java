@@ -23,6 +23,8 @@ public class Main {
         synchronized (oneLock) {
             oneLock.notify();
         }
-        Thread.sleep(1000000000);
+        one.join();
+        two.join();
+        three.join();
     }
 }
